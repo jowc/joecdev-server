@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, Length, IsArray } from 'class-validator';
+import { IsString, IsNotEmpty, Length, IsArray, IsFQDN } from 'class-validator';
 
 export class CreateJobsDto {
   @IsString()
@@ -19,5 +19,6 @@ export class CreateJobsDto {
   portfolio_image: string[];
 
   @IsString()
+  @IsFQDN()
   portfolio_link: string;
 }

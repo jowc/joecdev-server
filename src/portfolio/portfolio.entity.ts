@@ -1,11 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Stack } from 'src/stack/stack.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Portfolio {
   @PrimaryGeneratedColumn() id: number;
   @Column({ type: 'text' }) title: string;
   @Column({ type: 'text' }) description: string;
-  @Column({ array: true, type: 'text' }) stacks: string;
+  @OneToMany(() => Stack, (stack) => stack, { nullable: true })
+  stacks: Stack[];
   @Column({ type: 'text' }) portfolio_image: string;
   @Column({ type: 'text', nullable: true }) portfolio_link: string;
 }
