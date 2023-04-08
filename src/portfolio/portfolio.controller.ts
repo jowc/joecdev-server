@@ -1,11 +1,28 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  HttpCode,
+  Param,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { PortfolioService } from './portfolio.service';
+import { CreateJobsDto } from './portfolio.dto';
+import { Portfolio } from './portfolio.entity';
 
 @Controller('jobs')
 export class PortfolioController {
   constructor(private readonly portFolioService: PortfolioService) {}
 
   @Get()
+  async getPortfolioAll(): Promise<Portfolio[]> {
+    return await this.portFolioService.findAll();
+  }
+
+  @Get('test')
   getHello(): string[] {
     return this.portFolioService.getJobs();
   }
@@ -16,7 +33,14 @@ export class PortfolioController {
   }
 
   @Post('create')
-  createJob(@Body() body): any {
-    return body;
+  @UsePipes(ValidationPipe)
+  async createJob(@Body() body: CreateJobsDto): Promise<CreateJobsDto> {
+    return await this.portFolioService.createPortfoilio(body);
+  }
+
+  @Delete(':id')
+  @HttpCode(200)
+  async deletePortfolio(@Param('id') id): Promise<void> {
+    return await this.portFolioService.delete(id);
   }
 }
