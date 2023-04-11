@@ -20,8 +20,8 @@ export class PortfolioService {
     return this.portfolioRepo.find();
   }
 
-  findOne(id: number): Promise<Portfolio | null> {
-    return this.portfolioRepo.findOneBy({ id });
+  async findOne(id: number): Promise<Portfolio | null> {
+    return await this.portfolioRepo.findOneByOrFail({ id });
   }
 
   async delete(id: number): Promise<void> {

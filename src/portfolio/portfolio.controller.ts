@@ -13,7 +13,7 @@ import { PortfolioService } from './portfolio.service';
 import { CreateJobsDto } from './portfolio.dto';
 import { Portfolio } from './portfolio.entity';
 
-@Controller('jobs')
+@Controller('portfolio')
 export class PortfolioController {
   constructor(private readonly portFolioService: PortfolioService) {}
 
@@ -28,11 +28,11 @@ export class PortfolioController {
   }
 
   @Get(':id')
-  getJob(@Param('id') id): string {
-    return id;
+  getJob(@Param('id') id) {
+    return this.portFolioService.findOne(id);
   }
 
-  @Post('create')
+  @Post('add')
   @UsePipes(ValidationPipe)
   async createJob(@Body() body: CreateJobsDto): Promise<CreateJobsDto> {
     return await this.portFolioService.createPortfoilio(body);

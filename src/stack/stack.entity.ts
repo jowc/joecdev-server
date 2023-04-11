@@ -11,5 +11,5 @@ export class Stack {
   @ManyToOne(() => Portfolio, (portfolio) => portfolio.stacks, {
     nullable: true,
   })
-  portfolio;
+  portfolio: Portfolio;
 }
