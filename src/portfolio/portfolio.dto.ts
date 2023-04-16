@@ -12,7 +12,7 @@ export class CreateJobsDto {
 
   @IsNotEmpty()
   @IsArray()
-  stacks: string[];
+  stacks: number;
 
   @IsNotEmpty()
   @IsString()

@@ -8,5 +8,6 @@ import { StackService } from './stack.service';
   controllers: [StackController],
   imports: [TypeOrmModule.forFeature([Stack])],
   providers: [StackService],
+  exports: [StackService],
 })
 export class StackModule {}

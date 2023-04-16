@@ -5,6 +5,7 @@ import {
   Get,
   HttpCode,
   Param,
+  Patch,
   Post,
   UsePipes,
   ValidationPipe,
@@ -34,8 +35,13 @@ export class PortfolioController {
 
   @Post('add')
   @UsePipes(ValidationPipe)
-  async createJob(@Body() body: CreateJobsDto): Promise<CreateJobsDto> {
+  async createJob(@Body() body: CreateJobsDto) {
     return await this.portFolioService.createPortfoilio(body);
+  }
+
+  @Patch(':id')
+  updateJob(@Param('id') id, @Body() body: CreateJobsDto) {
+    return this.portFolioService.update(id, body);
   }
 
   @Delete(':id')
