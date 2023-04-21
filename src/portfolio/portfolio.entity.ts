@@ -1,8 +1,14 @@
 import { Stack } from 'src/stack/stack.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
-export class Portfolio {
+export class Portfolio extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
   @Column({ type: 'text' }) title: string;
   @Column({ type: 'text' }) description: string;

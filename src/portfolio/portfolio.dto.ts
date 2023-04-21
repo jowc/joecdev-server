@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty, Length, IsArray, IsFQDN } from 'class-validator';
+import { IsString, IsNotEmpty, Length, IsFQDN } from 'class-validator';
 
 export class CreateJobsDto {
   @IsString()
@@ -11,12 +11,11 @@ export class CreateJobsDto {
   description: string;
 
   @IsNotEmpty()
-  @IsArray()
-  stacks: number;
+  stacks: number[];
 
   @IsNotEmpty()
   @IsString()
-  portfolio_image: string[];
+  portfolio_image: string;
 
   @IsString()
   @IsFQDN()

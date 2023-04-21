@@ -16,16 +16,10 @@ export class PortfolioService {
   getJobs = (): string[] => this.jobs;
 
   async createPortfoilio(portfolio: any) {
-    const stacksList: Stack[] = [];
-    portfolio.stacks.forEach((stack: Stack) => {
-      this.stackService.findOne(+stack).then((stack) => stacksList.push(stack));
-      console.log({ ...portfolio, stacks: [...stacksList] });
-    });
-    // return await this.stackService
-    //   .findOne(+portfolio.stacks)
-    //   .then((stack) =>
-    //     this.portfolioRepo.save({ ...portfolio, stacks: [{ ...stack }] }),
-    //   );
+    // const stacksList: Stack[] = [];
+    const newPortfolio = this.portfolioRepo.create(portfolio);
+    // console.log(newPortfolio);
+    return await this.portfolioRepo.save(newPortfolio);
   }
 
   async update(id, portfolio) {
