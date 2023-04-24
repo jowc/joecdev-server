@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Portfolio } from './portfolio.entity';
-import { StackService } from 'src/stack/stack.service';
-import { Stack } from 'src/stack/stack.entity';
+import { Portfolio } from '../entities/portfolio.entity';
+import { Stack } from '../entities/stack.entity';
+import { StackService } from './stack.service';
 
 @Injectable()
 export class PortfolioService {
@@ -25,8 +25,8 @@ export class PortfolioService {
       ...portfolio,
       stacks: stacksList,
     });
-    console.log(newPortfolio);
-    // return await this.portfolioRepo.save(newPortfolio);
+    // console.log(newPortfolio);
+    return await this.portfolioRepo.save(newPortfolio);
   }
 
   async update(id, portfolio) {

@@ -1,6 +1,6 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { Portfolio } from 'src/portfolio/portfolio.entity';
-import { Stack } from 'src/stack/stack.entity';
+import { Portfolio } from 'src/portfolio/entities/portfolio.entity';
+import { Stack } from 'src/portfolio/entities/stack.entity';
 
 export const typeORMConfig: TypeOrmModuleOptions = {
   type: 'postgres',

@@ -1,5 +1,5 @@
 import { Length } from 'class-validator';
-import { Portfolio } from 'src/portfolio/portfolio.entity';
+
 import {
   BaseEntity,
   Column,
@@ -7,6 +7,7 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Portfolio } from './portfolio.entity';
 
 @Entity()
 export class Stack extends BaseEntity {

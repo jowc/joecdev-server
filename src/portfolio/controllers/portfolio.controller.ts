@@ -10,9 +10,9 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { PortfolioService } from './portfolio.service';
-import { CreateJobsDto } from './portfolio.dto';
-import { Portfolio } from './portfolio.entity';
+import { PortfolioService } from '../services/portfolio.service';
+import { CreateJobsDto } from '../dto/portfolio.dto';
+import { Portfolio } from '../entities/portfolio.entity';
 
 @Controller('portfolio')
 export class PortfolioController {

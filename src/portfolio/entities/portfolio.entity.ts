@@ -1,4 +1,3 @@
-import { Stack } from 'src/stack/stack.entity';
 import {
   BaseEntity,
   Column,
@@ -6,6 +5,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Stack } from './stack.entity';
 
 @Entity()
 export class Portfolio extends BaseEntity {

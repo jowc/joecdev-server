@@ -10,7 +10,7 @@ export class CreateJobsDto {
   @Length(5, 255)
   description: string;
 
-  stacks: stacksDto[];
+  stacks: number[];
 
   @IsNotEmpty()
   @IsString()
@@ -19,8 +19,4 @@ export class CreateJobsDto {
   @IsString()
   @IsFQDN()
   portfolio_link: string;
-}
-
-class stacksDto {
-  id: number;
 }

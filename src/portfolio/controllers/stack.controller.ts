@@ -7,7 +7,7 @@ import {
   Delete,
   Param,
 } from '@nestjs/common';
-import { StackService } from './stack.service';
+import { StackService } from '../services/stack.service';
 
 @Controller('stack')
 export class StackController {
