@@ -5,8 +5,8 @@ import {
   configModuleOption,
   typeORMConfigAsync,
 } from 'src/config/typeorm.config';
-import { PhotographyModule } from 'src/photography/photography.module';
-import { PortfolioModule } from 'src/portfolio/portfolio.module';
+import { PhotographyModule } from 'src/modules/photography/photography.module';
+import { PortfolioModule } from 'src/modules/portfolio/portfolio.module';
 
 @Module({
   imports: [

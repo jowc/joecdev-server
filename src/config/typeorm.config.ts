@@ -7,9 +7,9 @@ import {
   TypeOrmModuleAsyncOptions,
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
-import { Photo } from 'src/photography/photography.entity';
-import { Portfolio } from 'src/portfolio/entities/portfolio.entity';
-import { Stack } from 'src/portfolio/entities/stack.entity';
+import { Photo } from 'src/modules/photography/photography.entity';
+import { Portfolio } from 'src/modules/portfolio/entities/portfolio.entity';
+import { Stack } from 'src/modules/portfolio/entities/stack.entity';
 
 export class TypeORMConfig {
   static getConfig(_configService: ConfigService): TypeOrmModuleOptions {
