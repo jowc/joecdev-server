@@ -1,9 +1,11 @@
 import {
   BaseEntity,
   Column,
+  CreateDateColumn,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { Stack } from './stack.entity';
 
@@ -16,4 +18,6 @@ export class Portfolio extends BaseEntity {
   stacks: Stack[];
   @Column({ type: 'text' }) portfolio_image: string;
   @Column({ type: 'text', nullable: true }) portfolio_link: string;
+  @CreateDateColumn({ nullable: true }) created_at: Date;
+  @UpdateDateColumn({ nullable: true }) updated_at: Date;
 }

@@ -18,7 +18,7 @@ export class StackController {
     return this.stackService.addStack(stack);
   }
 
-  @Get()
+  @Get('all')
   getAllStack(): Promise<any> {
     return this.stackService.findAll();
   }
