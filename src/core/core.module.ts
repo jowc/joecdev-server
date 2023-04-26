@@ -7,6 +7,7 @@ import {
 } from 'src/config/typeorm.config';
 import { PhotographyModule } from 'src/modules/photography/photography.module';
 import { PortfolioModule } from 'src/modules/portfolio/portfolio.module';
+import { UserModule } from 'src/modules/user/user.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PortfolioModule } from 'src/modules/portfolio/portfolio.module';
     TypeOrmModule.forRootAsync(typeORMConfigAsync),
     PortfolioModule,
     PhotographyModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],

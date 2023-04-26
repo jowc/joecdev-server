@@ -7,4 +7,10 @@ export class Photo {
 
   @Column()
   photo_url: string;
+
+  @Column({
+    default: false,
+    type: 'boolean',
+  })
+  featured: boolean;
 }

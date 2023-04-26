@@ -10,6 +10,7 @@ import {
 import { Photo } from 'src/modules/photography/photography.entity';
 import { Portfolio } from 'src/modules/portfolio/entities/portfolio.entity';
 import { Stack } from 'src/modules/portfolio/entities/stack.entity';
+import { User } from 'src/modules/user/user.entity';
 
 export class TypeORMConfig {
   static getConfig(_configService: ConfigService): TypeOrmModuleOptions {
@@ -20,7 +21,7 @@ export class TypeORMConfig {
       username: _configService.get('DB_USER'),
       password: _configService.get('DB_PASSWORD'),
       database: _configService.get('DB'),
-      entities: [Portfolio, Stack, Photo],
+      entities: [Portfolio, Stack, Photo, User],
       synchronize: true,
     };
   }

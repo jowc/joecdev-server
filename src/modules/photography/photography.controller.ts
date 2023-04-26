@@ -8,7 +8,7 @@ export class PhotographyController {
 
   @Post()
   async addPhoto(@Body() photo): Promise<Photo> {
-    console.log(photo);
+    // console.log(photo);
     return await this.photoService.save(photo);
   }
 
@@ -17,7 +17,7 @@ export class PhotographyController {
     return await this.photoService.findAll();
   }
 
-  @Get(':id')
+  @Get('/:id')
   async getOnePhoto(@Param('id') id: number): Promise<Photo> {
     return await this.photoService.findOne(id);
   }
