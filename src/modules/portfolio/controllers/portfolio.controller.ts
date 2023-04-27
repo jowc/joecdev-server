@@ -46,7 +46,7 @@ export class PortfolioController {
 
   @Delete(':id')
   @HttpCode(200)
-  async deletePortfolio(@Param('id') id): Promise<void> {
-    return await this.portFolioService.delete(id);
+  async deletePortfolio(@Param('id') id): Promise<any> {
+    return await this.portFolioService.delete(+id);
   }
 }

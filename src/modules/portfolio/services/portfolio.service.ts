@@ -49,7 +49,8 @@ export class PortfolioService {
     return await this.portfolioRepo.findOneByOrFail({ id });
   }
 
-  async delete(id: number): Promise<void> {
-    await this.portfolioRepo.delete(id);
+  async delete(id: number): Promise<any> {
+    await this.portfolioRepo.delete({ id });
+    return { message: 'User deleted' };
   }
 }

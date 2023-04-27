@@ -8,6 +8,7 @@ import {
   Delete,
   UsePipes,
   ValidationPipe,
+  HttpCode,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
@@ -31,7 +32,7 @@ export class UserController {
   @Post('/register')
   @UsePipes(ValidationPipe)
   async createUser(@Body() user: RegisterDto): Promise<User | string> {
-    return await this.userService.createUser(user);
+    return await this.userService.createOrUpdateUser(user);
   }
 
   @Put('/:id')
@@ -42,7 +43,8 @@ export class UserController {
     return await this.userService.updateUser(id, payload);
   }
 
-  @Delete()
+  @Delete('/:id')
+  @HttpCode(200)
   deleteUser(@Param('id') id: number) {
     this.userService.deleteUser(+id);
   }
