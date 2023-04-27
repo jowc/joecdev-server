@@ -1,5 +1,5 @@
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserDto } from './user.dto';
+import { RegisterDto, UpdateDto } from './dto/user.dto';
 import { Injectable } from '@nestjs/common';
 import { User } from './user.entity';
 import { Repository } from 'typeorm';
@@ -16,13 +16,21 @@ export class UserService {
     return await this.userRepo.findOneByOrFail({ id });
   }
 
-  createUser(user: UserDto) {
-    return this.userRepo.save(user);
+  async createUser(user: RegisterDto): Promise<User | string> {
+    if (user.password) {
+      if (user.password !== user.confirm_password) {
+        await 'password does not match';
+      } else {
+        delete user.confirm_password;
+        await this.userRepo.save(user);
+      }
+    }
+    return await this.userRepo.save(user);
   }
 
-  async updateUser(id: number, payload: User) {
-    const user = await this.getOne(id);
-    const updatedUser = this.userRepo.create({ ...user, ...payload });
+  async updateUser(id: number, payload: any): Promise<any> {
+    const user: User = await this.getOne(id);
+    const updatedUser: any = this.userRepo.create({ ...user, ...payload });
     // console.log('user instance: ', updatedUser);
     return await this.createUser(updatedUser);
   }

@@ -1,13 +1,23 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { PhotographyService } from './photography.service';
 import { Photo } from './photography.entity';
+import { photographyDto } from './photography.dto';
 
 @Controller('photos')
 export class PhotographyController {
   constructor(private photoService: PhotographyService) {}
 
   @Post()
-  async addPhoto(@Body() photo): Promise<Photo> {
+  @UsePipes(ValidationPipe)
+  async addPhoto(@Body() photo: photographyDto): Promise<Photo> {
     // console.log(photo);
     return await this.photoService.save(photo);
   }

@@ -34,10 +34,13 @@ export class PortfolioService {
     return await this.portfolioRepo.save(newJob);
   }
 
-  findAll(): Promise<Portfolio[]> {
-    return this.portfolioRepo.find({
+  async findAll(): Promise<Portfolio[]> {
+    return await this.portfolioRepo.find({
       relations: {
         stacks: true,
+      },
+      order: {
+        id: 'DESC',
       },
     });
   }

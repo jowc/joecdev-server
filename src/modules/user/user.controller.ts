@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './user.entity';
-import { UserDto } from './user.dto';
+import { RegisterDto, UpdateDto } from './dto/user.dto';
 
 @Controller('user')
 export class UserController {
@@ -28,17 +28,17 @@ export class UserController {
     return await this.userService.getOne(+id);
   }
 
-  @Post()
+  @Post('/register')
   @UsePipes(ValidationPipe)
-  async createUser(@Body() user: UserDto): Promise<UserDto & User> {
+  async createUser(@Body() user: RegisterDto): Promise<User | string> {
     return await this.userService.createUser(user);
   }
 
   @Put('/:id')
   async updateUser(
     @Param('id') id: number,
-    @Body() payload: User,
-  ): Promise<UserDto & User> {
+    @Body(ValidationPipe) payload: UpdateDto,
+  ): Promise<User> {
     return await this.userService.updateUser(id, payload);
   }
 
