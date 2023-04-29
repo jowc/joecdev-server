@@ -16,6 +16,10 @@ export class UserService {
     return await this.userRepo.findOneByOrFail({ id });
   }
 
+  async findOne(username: string): Promise<User> {
+    return await this.userRepo.findOneBy({ username });
+  }
+
   async createOrUpdateUser(user: RegisterDto): Promise<User | string> {
     if (user.password) {
       if (user.password !== user.confirm_password) {
