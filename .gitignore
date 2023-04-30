@@ -36,3 +36,8 @@ lerna-debug.log*
 
 #saved dumps
 /src/dumps
+
+#enviroment variables
+.development.env
+.env
+*.env
