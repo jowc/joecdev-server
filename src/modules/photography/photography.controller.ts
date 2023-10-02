@@ -8,7 +8,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PhotographyService } from './photography.service';
-import { Photo } from './photography.entity';
+import { Photograph } from './photography.entity';
 import { photographyDto } from './photography.dto';
 
 @Controller('photos')
@@ -17,18 +17,18 @@ export class PhotographyController {
 
   @Post()
   @UsePipes(ValidationPipe)
-  async addPhoto(@Body() photo: photographyDto): Promise<Photo> {
+  async addPhoto(@Body() photo: photographyDto): Promise<Photograph> {
     // console.log(photo);
     return await this.photoService.save(photo);
   }
 
   @Get('all')
-  async getAll(): Promise<Photo[]> {
+  async getAll(): Promise<Photograph[]> {
     return await this.photoService.findAll();
   }
 
   @Get('/:id')
-  async getOnePhoto(@Param('id') id: number): Promise<Photo> {
+  async getOnePhoto(@Param('id') id: number): Promise<Photograph> {
     return await this.photoService.findOne(id);
   }
 }

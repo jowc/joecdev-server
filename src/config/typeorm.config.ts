@@ -7,7 +7,8 @@ import {
   TypeOrmModuleAsyncOptions,
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
-import { Photo } from 'src/modules/photography/photography.entity';
+import { Photograph } from 'src/modules/photography/photography.entity';
+import { Image } from 'src/modules/portfolio/entities/image.entity';
 import { Portfolio } from 'src/modules/portfolio/entities/portfolio.entity';
 import { Stack } from 'src/modules/portfolio/entities/stack.entity';
 import { User } from 'src/modules/user/user.entity';
@@ -21,7 +22,7 @@ export class TypeORMConfig {
       username: _configService.get('DB_USER'),
       password: _configService.get('DB_PASSWORD'),
       database: _configService.get('DB'),
-      entities: [Portfolio, Stack, Photo, User],
+      entities: [Portfolio, Stack, Photograph, User, Image],
       synchronize: true,
     };
   }

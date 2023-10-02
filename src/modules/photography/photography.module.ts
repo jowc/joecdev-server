@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { PhotographyService } from './photography.service';
 import { PhotographyController } from './photography.controller';
-import { Photo } from './photography.entity';
+import { Photograph } from './photography.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Photo])],
+  imports: [TypeOrmModule.forFeature([Photograph])],
   providers: [PhotographyService],
   controllers: [PhotographyController],
 })

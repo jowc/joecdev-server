@@ -1,30 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Photo } from './photography.entity';
+import { Photograph } from './photography.entity';
 import { Repository } from 'typeorm';
 import { photographyDto } from './photography.dto';
 
 @Injectable()
 export class PhotographyService {
   constructor(
-    @InjectRepository(Photo)
-    private photographyRepo: Repository<Photo>,
+    @InjectRepository(Photograph)
+    private photographyRepo: Repository<Photograph>,
   ) {}
 
-  async save(photo: photographyDto): Promise<Photo> {
+  async save(photo: photographyDto): Promise<Photograph> {
     return await this.photographyRepo.save(photo);
   }
 
-  async update(photo: Photo): Promise<Photo> {
+  async update(photo: Photograph): Promise<Photograph> {
     const oldPhoto = await this.photographyRepo.findOneBy({ id: photo.id });
     return await this.save({ ...oldPhoto, ...photo });
   }
 
-  async findAll(): Promise<Photo[]> {
+  async findAll(): Promise<Photograph[]> {
     return await this.photographyRepo.find();
   }
 
-  async findOne(id: number): Promise<Photo | null> {
+  async findOne(id: number): Promise<Photograph | null> {
     return await this.photographyRepo.findOneBy({ id });
   }
 
