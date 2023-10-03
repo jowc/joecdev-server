@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   Entity,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -24,11 +25,8 @@ export class Portfolio extends BaseEntity {
   @OneToMany(() => Stack, (stack) => stack.portfolio)
   stacks: Stack[];
 
-  @OneToMany(() => Image, (image) => image.portfolio)
-  images: Image[];
-
-  @Column({ type: 'text' })
-  portfolio_image: string;
+  @OneToOne(() => Image, (image) => image.portfolio)
+  image?: Image;
 
   @Column({ type: 'text', nullable: true })
   portfolio_link: string;

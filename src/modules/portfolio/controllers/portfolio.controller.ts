@@ -33,7 +33,7 @@ export class PortfolioController {
     return this.portFolioService.findOne(id);
   }
 
-  @Post('add')
+  @Post('')
   @UsePipes(ValidationPipe)
   async createJob(@Body() body: CreateJobsDto) {
     return await this.portFolioService.createPortfoilio(body);

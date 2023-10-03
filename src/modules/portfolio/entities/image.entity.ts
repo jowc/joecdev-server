@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 import { Portfolio } from './portfolio.entity';
 
 @Entity('images')
@@ -11,7 +11,7 @@ export class Image {
   })
   portfolio_url: string;
 
-  @ManyToOne(() => Portfolio, (portfolio) => portfolio.images, {
+  @OneToOne(() => Portfolio, (portfolio) => portfolio.image, {
     nullable: true,
     onDelete: 'CASCADE',
   })

@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Portfolio } from '../entities/portfolio.entity';
 import { Stack } from '../entities/stack.entity';
 import { StackService } from './stack.service';
+import { Image } from '../entities/image.entity';
 
 @Injectable()
 export class PortfolioService {
@@ -25,8 +26,9 @@ export class PortfolioService {
       ...portfolio,
       stacks: stacksList,
     });
-    // console.log(newPortfolio);
-    return await this.portfolioRepo.save(newPortfolio);
+
+    console.log(newPortfolio);
+    // return await this.portfolioRepo.save(newPortfolio);
   }
 
   async update(id, portfolio) {
