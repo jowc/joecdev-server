@@ -8,6 +8,7 @@ import {
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { PhotographyModule } from 'src/modules/photography/photography.module';
 import { PortfolioModule } from 'src/modules/portfolio/portfolio.module';
+import { UploadModule } from 'src/modules/upload/upload.module';
 import { UserModule } from 'src/modules/user/user.module';
 
 @Module({
@@ -18,6 +19,7 @@ import { UserModule } from 'src/modules/user/user.module';
     PhotographyModule,
     UserModule,
     AuthModule,
+    UploadModule,
   ],
   controllers: [],
   providers: [],
