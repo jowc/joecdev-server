@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import { Stack } from './stack.entity';
-import { Image } from './image.entity';
+import { Image } from '../../upload/image.entity';
 
 @Entity()
 export class Portfolio extends BaseEntity {

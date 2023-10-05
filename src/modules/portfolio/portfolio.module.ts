@@ -6,10 +6,9 @@ import { Portfolio } from './entities/portfolio.entity';
 import { Stack } from './entities/stack.entity';
 import { StackController } from './controllers/stack.controller';
 import { StackService } from './services/stack.service';
-import { Image } from './entities/image.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Portfolio, Stack, Image])],
+  imports: [TypeOrmModule.forFeature([Portfolio, Stack])],
   controllers: [PortfolioController, StackController],
   providers: [PortfolioService, StackService],
 })

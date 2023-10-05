@@ -8,7 +8,7 @@ import {
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
 import { Photograph } from 'src/modules/photography/photography.entity';
-import { Image } from 'src/modules/portfolio/entities/image.entity';
+import { Image } from 'src/modules/upload/image.entity';
 import { Portfolio } from 'src/modules/portfolio/entities/portfolio.entity';
 import { Stack } from 'src/modules/portfolio/entities/stack.entity';
 import { User } from 'src/modules/user/user.entity';

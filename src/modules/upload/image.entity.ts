@@ -1,14 +1,15 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
-import { Portfolio } from './portfolio.entity';
+import { Portfolio } from '../portfolio/entities/portfolio.entity';
 
 @Entity('images')
 export class Image {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
-  @Column({
-    nullable: true,
-  })
+  @Column({ type: 'text' })
+  title: string;
+
+  @Column({ type: 'text' })
   portfolio_url: string;
 
   @OneToOne(() => Portfolio, (portfolio) => portfolio.image, {

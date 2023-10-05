@@ -28,4 +28,19 @@ export class UploadController {
       throw new UnsupportedMediaTypeException();
     return await this.uploadService.upload(file.originalname, file.buffer);
   }
+
+  @Post('save')
+  @UseInterceptors(FileInterceptor('file'))
+  async saveImage(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [new MaxFileSizeValidator({ maxSize: 1000000 })],
+      }),
+    )
+    file: Express.Multer.File,
+  ) {
+    if (!file.mimetype.includes('image'))
+      throw new UnsupportedMediaTypeException();
+    return await this.uploadService.saveImage(file.originalname, file.buffer);
+  }
 }

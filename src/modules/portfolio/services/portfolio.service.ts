@@ -4,7 +4,7 @@ import { Repository } from 'typeorm';
 import { Portfolio } from '../entities/portfolio.entity';
 import { Stack } from '../entities/stack.entity';
 import { StackService } from './stack.service';
-import { Image } from '../entities/image.entity';
+import { Image } from '../../upload/image.entity';
 
 @Injectable()
 export class PortfolioService {
