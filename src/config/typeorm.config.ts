@@ -38,5 +38,5 @@ export const typeORMConfigAsync: TypeOrmModuleAsyncOptions = {
 
 export const configModuleOption: ConfigModuleOptions = {
   isGlobal: true,
-  envFilePath: '.development.env',
+  envFilePath: '.env',
 };

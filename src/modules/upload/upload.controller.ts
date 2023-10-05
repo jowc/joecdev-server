@@ -3,19 +3,29 @@ import {
   Post,
   UseInterceptors,
   UploadedFile,
+  ParseFilePipe,
+  MaxFileSizeValidator,
   UnsupportedMediaTypeException,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { UploadService } from './upload.service';
 
 @Controller('upload')
 export class UploadController {
-  constructor() {}
+  constructor(private readonly uploadService: UploadService) {}
 
   @Post('')
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
+  async uploadFile(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [new MaxFileSizeValidator({ maxSize: 1000000 })],
+      }),
+    )
+    file: Express.Multer.File,
+  ) {
     if (!file.mimetype.includes('image'))
       throw new UnsupportedMediaTypeException();
-    console.log(file);
+    return await this.uploadService.upload(file.originalname, file.buffer);
   }
 }

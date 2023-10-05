@@ -30,7 +30,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@types/aws-sdk": "^2.7.0",
     "@types/bcrypt": "^5.0.0",
-    "aws-sdk": "^2.1468.0",
+    "aws-sdk": "^2.1470.0",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
@@ -40,7 +40,8 @@
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.13"
+    "typeorm": "^0.3.13",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
