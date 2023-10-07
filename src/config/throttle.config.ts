@@ -1,4 +1,3 @@
-import { ConfigService } from '@nestjs/config';
 import { ThrottlerModuleOptions } from '@nestjs/throttler';
 
 export class ThrottleConfig {
