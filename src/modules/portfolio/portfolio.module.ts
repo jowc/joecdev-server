@@ -7,8 +7,10 @@ import { Stack } from './entities/stack.entity';
 import { StackController } from './controllers/stack.controller';
 import { StackService } from './services/stack.service';
 
+import { UploadModule } from '../upload/upload.module';
+
 @Module({
-  imports: [TypeOrmModule.forFeature([Portfolio, Stack])],
+  imports: [TypeOrmModule.forFeature([Portfolio, Stack]), UploadModule],
   controllers: [PortfolioController, StackController],
   providers: [PortfolioService, StackService],
 })

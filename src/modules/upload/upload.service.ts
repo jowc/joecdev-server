@@ -81,6 +81,10 @@ export class UploadService {
     }
   }
 
+  async getImage(id: number) {
+    return await this.imageRepo.findOne({ where: { id } });
+  }
+
   async uploadHandler(
     buket: string,
     key: string,

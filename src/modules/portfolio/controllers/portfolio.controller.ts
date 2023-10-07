@@ -11,15 +11,14 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { PortfolioService } from '../services/portfolio.service';
-import { CreateJobsDto } from '../dto/portfolio.dto';
-import { Portfolio } from '../entities/portfolio.entity';
+import { CreatePortfolioDto, PortfolioResponseDto } from '../dto/portfolio.dto';
 
 @Controller('portfolio')
 export class PortfolioController {
   constructor(private readonly portFolioService: PortfolioService) {}
 
   @Get()
-  async getPortfolioAll(): Promise<Portfolio[]> {
+  async getPortfolioAll(): Promise<PortfolioResponseDto[]> {
     return await this.portFolioService.findAll();
   }
 
@@ -35,12 +34,12 @@ export class PortfolioController {
 
   @Post('')
   @UsePipes(ValidationPipe)
-  async createJob(@Body() body: CreateJobsDto) {
+  async createJob(@Body() body: CreatePortfolioDto) {
     return await this.portFolioService.createPortfoilio(body);
   }
 
   @Patch(':id')
-  updateJob(@Param('id') id, @Body() body: CreateJobsDto) {
+  updateJob(@Param('id') id, @Body() body: CreatePortfolioDto) {
     return this.portFolioService.update(id, body);
   }
 
