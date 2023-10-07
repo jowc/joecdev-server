@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { APP_GUARD } from '@nestjs/core';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   configModuleOption,
@@ -15,6 +17,12 @@ import { UserModule } from 'src/modules/user/user.module';
   imports: [
     ConfigModule.forRoot(configModuleOption),
     TypeOrmModule.forRootAsync(typeORMConfigAsync),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 10,
+      },
+    ]),
     PortfolioModule,
     PhotographyModule,
     UserModule,
@@ -22,6 +30,11 @@ import { UserModule } from 'src/modules/user/user.module';
     UploadModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
+    },
+  ],
 })
 export class CoreModule {}
